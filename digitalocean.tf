@@ -1,0 +1,41 @@
+variable "do_token" {}
+variable "ssh_key_private" {}
+
+# Configure the DigitalOcean Provider
+provider "digitalocean" {
+    token = "${var.do_token}"
+}
+
+# Create a web server
+resource "digitalocean_droplet" "myblog" {
+    image  = "centos-7-x64"
+    name   = "myblog"
+    region = "nyc1"
+    size   = "s-1vcpu-1gb"
+    monitoring = "true"
+    ssh_keys = ["1632017"]
+
+    provisioner "remote-exec" {
+        inline = [
+          "yum install python -y",
+        ]
+
+         connection {
+            host        = "${self.ipv4_address}"
+            type        = "ssh"
+            user        = "root"
+            private_key = "${file("~/.ssh/id_rsa")}"
+        }
+    }
+
+    provisioner "local-exec" {
+        environment {
+            PUBLIC_IP                 = "${self.ipv4_address}"
+            PRIVATE_IP                = "${self.ipv4_address_private}"
+            ANSIBLE_HOST_KEY_CHECKING = "False" 
+        }
+
+        working_dir = "playbooks/"
+        command     = "ansible-playbook -u root --private-key ${var.ssh_key_private} -i ${self.ipv4_address}, install_nginx.yml "
+    }
+}

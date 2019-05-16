@@ -1,0 +1,22 @@
+---
+- name: Webserver installation
+  hosts: all
+  remote_user: root
+  become: true
+
+  tasks:
+
+    - name: Install epel release
+      yum:
+        name: epel-release
+        state: present
+
+    - name: install nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
