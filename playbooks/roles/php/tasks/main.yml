@@ -4,5 +4,9 @@
   yum: name={{ item }} state=present
   become: yes
   with_items:
-    - php7.2-gd 
-    - php7.2-ssh2
+    - php-common
+    - php-mysql
+    - php-gd
+    - php-xml
+    - php-mbstring
+    - php-mcrypt

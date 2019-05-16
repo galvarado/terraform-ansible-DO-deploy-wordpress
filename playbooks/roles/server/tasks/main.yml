@@ -1,17 +1,40 @@
 ---
 # tasks file for server
 - name: Update yum cache
-  yum: update_cache=yes cache_valid_time=3600
+  yum: update_cache=yes
   become: yes
 
-- name: Install required software
+
+- name: Download and install MySQL Community Repo
+  yum:
+    name: http://repo.mysql.com/mysql-community-release-el7-7.noarch.rpm
+    state: present
+
+- name: Install MySQL Server
+  yum:
+    name: mysql-server
+    state: present
+
+- name: Install remi repo
+  yum:
+    name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    state: present
+
+- name: Enable remi-php72
+  command: yum-config-manager --enable remi-php72
+
+- name: Update yum
+  yum: update_cache=yes
+
+
+- name: Install Apache and PHP 
   yum: name={{ item }} state=present
   become: yes
   with_items:
     - epel-release
+    - yum-utils
     - httpd
-    - mysql-community-server
-    - php7.2-mysql
-    - php7.2
-    - libapache2-mod-php7.2
-    - python-mysqldb
+    - php72
+    - php72-php-fpm
+    - php72-php-mysqlnd
+    - MySQL-python

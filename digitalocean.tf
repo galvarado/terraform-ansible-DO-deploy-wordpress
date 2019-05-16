@@ -15,6 +15,7 @@ resource "digitalocean_droplet" "myblog" {
     monitoring = "true"
     ssh_keys = ["1632017"]
 
+    # Install python on the droplet using remote-exec to execute ansible playbooks to configure the services
     provisioner "remote-exec" {
         inline = [
           "yum install python -y",
@@ -28,6 +29,7 @@ resource "digitalocean_droplet" "myblog" {
         }
     }
 
+    # Execute ansible playbooks using local-exec 
     provisioner "local-exec" {
         environment {
             PUBLIC_IP                 = "${self.ipv4_address}"
@@ -36,6 +38,6 @@ resource "digitalocean_droplet" "myblog" {
         }
 
         working_dir = "playbooks/"
-        command     = "ansible-playbook -u root --private-key ${var.ssh_key_private} -i ${self.ipv4_address}, install_nginx.yml "
+        command     = "ansible-playbook -u root --private-key ${var.ssh_key_private} -i ${self.ipv4_address}, wordpress_playbook.yml "
     }
 }

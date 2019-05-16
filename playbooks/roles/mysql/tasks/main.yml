@@ -1,4 +1,13 @@
 ---
+- name: Start MySQL Server and enable it
+  service: name=mysqld state=started enabled=yes
+
+- name: Remove Test database if it exist.
+  mysql_db: name=test state=absent
+
+- name: Remove All Anonymous User Accounts
+  mysql_user: name=” host_all=yes state=absent
+
 - name: Create mysql database
   mysql_db: name={{ wp_mysql_db }} state=present
   become: yes
