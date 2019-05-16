@@ -1,0 +1,21 @@
+- hosts: all
+  gather_facts: False
+  
+
+
+  """
+  This test or install Python 2.7 onto all the target servers (which is an Ansible dependency) 
+  and then it goes on to assigning 4 roles to the hosts.
+  """
+
+  tasks:
+  - name: install python 2
+    raw: test -e /usr/bin/python || (yum update && yum install -y python)
+
+- hosts: all
+
+  roles:
+    - server
+    - php
+    - mysql
+    - wordpress

@@ -1,0 +1,8 @@
+---
+# tasks file for php
+- name: Install php extensions
+  yum: name={{ item }} state=present
+  become: yes
+  with_items:
+    - php7.2-gd 
+    - php7.2-ssh2
