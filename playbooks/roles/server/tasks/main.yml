@@ -34,6 +34,7 @@
     - epel-release
     - yum-utils
     - httpd
+    - php
     - php72
     - php72-php-fpm
     - php72-php-mysqlnd
