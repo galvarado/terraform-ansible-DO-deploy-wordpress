@@ -41,3 +41,19 @@
     - {'regexp': "define\\( 'DB_USER', '*.*' \\);", 'line': "define('DB_USER', '{{wp_mysql_user}}');"}        
     - {'regexp': "define\\( 'DB_PASSWORD', '*.*' \\);", 'line': "define('DB_PASSWORD', '{{wp_mysql_password}}');"}
   become: yes
+
+
+- name: Download wp-cli
+  get_url:
+    url="https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar"
+    dest="/usr/local/bin/wp"
+    force_basic_auth=yes
+    mode=0755
+
+- name: test if wp-cli is correctly installed
+  command: wp --info
+
+- name: Finish wordpress setup
+  command: wp core install --path=/var/www/wordpress --url=http://{{ ansible_eth0.ipv4.address }} --title="{{ wp_site_title }}" --admin_user={{ wp_site_user}} --admin_password={{ wp_site_password }} --admin_email={{ wp_site_email }}
+
+

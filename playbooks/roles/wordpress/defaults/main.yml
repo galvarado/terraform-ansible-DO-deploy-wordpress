@@ -1,2 +1,6 @@
 ---
 # defaults file for wordpress
+wp_site_title: New blog
+wp_site_user: superadmin
+wp_site_password: strongpasshere
+wp_site_email: some_email@example.com
