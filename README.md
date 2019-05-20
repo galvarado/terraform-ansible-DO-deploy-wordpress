@@ -42,28 +42,28 @@ To obtain the values of the region, the ssh key, the name of the image and the s
 To list all available ssh keys in the account:
 ```
 
-$doctl  -t [TOKEN] compute ssh-key list
+$ doctl  -t [TOKEN] compute ssh-key list
 ```
 
 
 To list all OS available:
 ```
 
-$doctl  -t [TOKEN] compute  image list --public
+$ doctl  -t [TOKEN] compute  image list --public
 ```
 
 
 To list all OS available:
 ```
 
-$doctl  -t [TOKEN] compute  region list
+$ doctl  -t [TOKEN] compute  region list
 ```
 
 
 To list all sizes available:
 ```
 
-$doctl  -t [TOKEN] compute  size list
+$ doctl  -t [TOKEN] compute  size list
 ```
 
 
@@ -120,8 +120,8 @@ If these values are not modified, they will be the data you will need to enter W
 To deploy the blog we just have to execute the following commands:
 ```
 
-$terraform plan
-$terraform apply
+$ terraform plan
+$ terraform apply
 ```
 
 Once the playbooks are finished, we can access our blog in the address / IP that is shown as ansible output and connect with the credentials in playbooks/roles/wordpress/defaults/main.yml.
