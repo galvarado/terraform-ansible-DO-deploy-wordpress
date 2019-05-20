@@ -137,27 +137,27 @@ Create Digitral Ocean droplet
 
 **Ansible**
 
-Install python 2
-Update yum cache
-Download and install MySQL Community Repo
-Install MySQL Server
-Install remi repo
-Enable remi-php72
-Update yum
-Install Apache and PHP
-Install php extensions
-Start MySQL Server and enable it
-Remove Test database if it exists
-Remove All Anonymous User Accounts
-Create mysql database
-Create mysql user
-Download WordPress
-Extract WordPress
-Update default Apache site
-Update default document root
-Copy sample config file
-Update WordPress config file
-Download wp-cli
-Test if wp-cli is correctly installed
-Finish wordpress setup via wp-cli
-Restart apache
+- Install python 2
+- Update yum cache
+- Download and install MySQL Community Repo
+- Install MySQL Server
+- Install remi repo
+- Enable remi-php72
+- Update yum
+- Install Apache and PHP
+- Install php extensions
+- Start MySQL Server and enable it
+- Remove Test database if it exists
+- Remove All Anonymous User Accounts
+- Create mysql database
+- Create mysql user
+- Download WordPress
+- Extract WordPress
+- Update default Apache site
+- Update default document root
+- Copy sample config file
+- Update WordPress config file
+- Download wp-cli
+- Test if wp-cli is correctly installed
+- Finish wordpress setup via wp-cli
+- Restart apache
