@@ -114,7 +114,7 @@ wp_site_email: some_email@example.com
 
 If these values are not modified, they will be the data you will need to enter Wordpress as an administrator user.
 
-### Ejecutar terraform
+### Execute terraform
 
 
 To deploy the blog we just have to execute the following commands:
@@ -126,7 +126,7 @@ $ terraform apply
 
 Once the playbooks are finished, we can access our blog in the address / IP that is shown as ansible output and connect with the credentials in playbooks/roles/wordpress/defaults/main.yml.
 
-##Summary
+##S ummary
 
 
 This is the summary of the tasks performed (25):
