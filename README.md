@@ -126,7 +126,7 @@ $ terraform apply
 
 Once the playbooks are finished, we can access our blog in the address / IP that is shown as ansible output and connect with the credentials in playbooks/roles/wordpress/defaults/main.yml.
 
-##S ummary
+## Summary
 
 
 This is the summary of the tasks performed (25):
