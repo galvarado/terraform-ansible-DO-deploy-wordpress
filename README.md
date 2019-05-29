@@ -12,6 +12,11 @@ Automate the provisioning of infrastructure resources in Digital Ocean by using 
 git clone git@github.com:galvarado/terraform-ansible-DO-deploy-wordpress.git
 ```
 
+You must have terraform installed. 
+
+Tested on:
+Terraform v0.12.0
++ provider.digitalocean v1.3.0
 
 ### Digital Ocean Token
 

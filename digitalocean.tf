@@ -35,7 +35,7 @@ resource "digitalocean_droplet" "myblog" {
 
     # Execute ansible playbooks using local-exec 
     provisioner "local-exec" {
-        environment {
+        environment = {
             PUBLIC_IP                 = "${self.ipv4_address}"
             PRIVATE_IP                = "${self.ipv4_address_private}"
             ANSIBLE_HOST_KEY_CHECKING = "False" 
